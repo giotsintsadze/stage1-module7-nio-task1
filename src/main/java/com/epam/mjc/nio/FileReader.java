@@ -8,8 +8,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FileReader {
+    private static final Logger logger = Logger.getLogger(FileReader.class.getName());
 
     public Profile getDataFromFile(File file) {
         Path filePath = file.toPath();
@@ -25,7 +28,7 @@ public class FileReader {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Error reading file: " + e);
+            logger.log(Level.SEVERE, "Error reading file: ", e);
         }
 
         return new Profile(
